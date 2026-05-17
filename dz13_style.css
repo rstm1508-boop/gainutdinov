@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+
+    p {
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    p {
+        font-size: 20px;
+    }
+
+    button {
+        width: 250px;
+        height: auto;
+    }
+
+    img {
+        max-width: 80%;
+    }
+}
+
+/* Десктопы */
+@media (min-width: 1025px) {
+
+    .container {
+        text-align: center;
+    }
+
+    p,
+    button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img {
+        max-width: 900px;
+    }
+}
