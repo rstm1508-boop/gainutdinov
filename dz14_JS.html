@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка примера</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            font-size: 20px;
+        }
+
+        input {
+            width: 60px;
+            padding: 5px;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 6px 12px;
+            font-size: 16px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Решите пример</h2>
+
+    <input id="a1" value="2" type="number" disabled> +
+    <input id="b1" value="2" type="number" disabled> =
+    <input id="result1" type="number">
+
+    <button onclick="check()">Проверить</button>
+
+    <div id="message"></div>
+
+    <script>
+
+        function check() {
+
+            // Получаем значения
+            const a = Number(document.getElementById("a1").value);
+            const b = Number(document.getElementById("b1").value);
+            const result = Number(document.getElementById("result1").value);
+
+            const resultInput = document.getElementById("result1");
+            const message = document.getElementById("message");
+
+            // Блокируем поле после проверки
+            resultInput.disabled = true;
+
+            // Проверяем ответ
+            if (result === a + b) {
+
+                message.textContent = "Верно!";
+                message.className = "success";
+
+            } else {
+
+                message.textContent = "Неверно!";
+                message.className = "error";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
