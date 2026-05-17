@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма пользователя</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        form {
+            width: 300px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Регистрация</h2>
+
+    <form id="userForm">
+
+        <label for="name">Имя:</label>
+        <input type="text" id="name" placeholder="Введите имя">
+
+        <label for="age">Возраст:</label>
+        <input type="text" id="age" placeholder="Введите возраст">
+
+        <button type="submit">Отправить</button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+
+        // Получаем элементы
+        const form = document.getElementById("userForm");
+        const nameInput = document.getElementById("name");
+        const ageInput = document.getElementById("age");
+        const message = document.getElementById("message");
+
+        // Обработка отправки формы
+        form.addEventListener("submit", function(event) {
+
+            // Отменяем перезагрузку страницы
+            event.preventDefault();
+
+            // Получаем значения
+            const name = nameInput.value.trim();
+            const age = Number(ageInput.value);
+
+            // Проверка возраста
+            if (isNaN(age) || age <= 0) {
+
+                message.textContent =
+                    "Ошибка: возраст должен быть положительным числом.";
+
+                message.className = "error";
+
+                return;
+            }
+
+            // Проверка имени
+            if (name === "") {
+
+                message.textContent =
+                    "Ошибка: введите имя.";
+
+                message.className = "error";
+
+                return;
+            }
+
+            // Успешная отправка
+            message.textContent =
+                `Здравствуйте, ${name}! Ваш возраст: ${age}.`;
+
+            message.className = "success";
+
+        });
+
+    </script>
+
+</body>
+</html>
