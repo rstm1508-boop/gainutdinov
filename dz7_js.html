@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+                // Функция для генерации всех перестановок строки
+        function getPermutations(str) {
+
+            // Базовый случай:
+            // если строка пустая или состоит из 1 символа
+            if (str.length <= 1) {
+                return [str];
+            }
+
+            let result = [];
+
+            // Перебираем каждый символ строки
+            for (let i = 0; i < str.length; i++) {
+
+                // Текущий символ
+                let currentChar = str[i];
+
+                // Оставшиеся символы без текущего
+                let remainingChars =
+                    str.slice(0, i) + str.slice(i + 1);
+
+                // Рекурсивно получаем перестановки оставшейся строки
+                let remainingPermutations =
+                    getPermutations(remainingChars);
+
+                // Добавляем текущий символ к каждой перестановке
+                for (let perm of remainingPermutations) {
+                    result.push(currentChar + perm);
+                }
+            }
+
+            // Удаляем возможные дубликаты
+            return [...new Set(result)];
+        }
+
+        // Пример использования
+        let input = prompt("Введите строку:");
+
+        let permutations = getPermutations(input);
+
+        console.log("Все перестановки:");
+        console.log(permutations);
+
+    </script>
+    
+</body>
+</html>
