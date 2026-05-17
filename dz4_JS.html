@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                // Глобальный массив пользователей
+        const users = [];
+
+        /**
+         * Добавление пользователя
+         * @param {string} name
+         * @param {number} age
+         */
+        function addUser(name, age) {
+
+        // Проверка имени
+        if (typeof name !== "string" || name.trim() === "") {
+            console.log("Ошибка: имя должно быть строкой.");
+            return;
+        }
+
+        // Проверка возраста
+        if (typeof age !== "number" || age <= 0) {
+            console.log("Ошибка: возраст должен быть положительным числом.");
+            return;
+        }
+
+        // Проверка на существующего пользователя
+        const existingUser = users.find(user => user.name === name);
+
+        if (existingUser) {
+            console.log(`Ошибка: пользователь "${name}" уже существует.`);
+            return;
+        }
+
+        // Создание нового пользователя
+        const newUser = {
+            name: name,
+            age: age
+        };
+
+        users.push(newUser);
+
+        console.log(`Пользователь "${name}" успешно добавлен.`);
+        }
+
+
+        /**
+         * Удаление пользователя
+         * @param {string} name
+         */
+        function removeUser(name) {
+
+        const userIndex = users.findIndex(user => user.name === name);
+
+        if (userIndex === -1) {
+            console.log(`Ошибка: пользователь "${name}" не найден.`);
+            return;
+        }
+
+        users.splice(userIndex, 1);
+
+        console.log(`Пользователь "${name}" удалён.`);
+        }
+
+
+        /**
+         * Получение информации о пользователе
+         * @param {string} name
+         */
+        function getUserInfo(name) {
+
+        const user = users.find(user => user.name === name);
+
+        if (!user) {
+            console.log(`Ошибка: пользователь "${name}" не найден.`);
+            return;
+        }
+
+        console.log("Информация о пользователе:");
+        console.log(`Имя: ${user.name}`);
+        console.log(`Возраст: ${user.age}`);
+        }
+
+
+        // ----------------------
+        // Примеры использования
+        // ----------------------
+
+        addUser("Иван", 25);
+        addUser("Мария", 30);
+
+        getUserInfo("Иван");
+
+        removeUser("Мария");
+
+        getUserInfo("Мария");
+
+        // Просмотр всего массива
+        console.log(users);
+
+    </script>
+</body>
+</html>
