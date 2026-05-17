@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+            // Переменная для хранения общего количества символов
+        let totalCharacters = 0;
+
+        while (true) {
+
+            // Запрашиваем строку у пользователя
+            let input = prompt("Введите строку:");
+
+            // Проверяем, не нажал ли пользователь "Отмена"
+            if (input === null) {
+                console.log("Программа завершена.");
+                break;
+            }
+
+            // Удаляем лишние пробелы по краям
+            input = input.trim();
+
+            // Проверяем ввод слова "стоп" без учёта регистра
+            if (input.toLowerCase() === "стоп") {
+                break;
+            }
+
+            // Удаляем все пробелы внутри строки
+            let textWithoutSpaces = input.replace(/\s/g, "");
+
+            // Подсчитываем количество символов
+            totalCharacters += textWithoutSpaces.length;
+        }
+
+        // Выводим результат
+        console.log(`Общее количество символов: ${totalCharacters}`);
+
+    </script>
+    
+</body>
+</html>
