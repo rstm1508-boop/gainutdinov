@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+                // Функция форматирования телефона
+        function formatPhoneNumber(phone) {
+
+            // Удаляем все пробелы
+            phone = phone.replace(/\s+/g, "");
+
+            // Проверяем формат номера
+            if (phone.startsWith("8")) {
+                // Меняем 8 на +7
+                phone = "+7" + phone.slice(1);
+
+            } else if (phone.startsWith("+7")) {
+                // Номер уже начинается с +7
+                phone = phone;
+
+            } else {
+                return "Ошибка: неверный формат номера телефона.";
+            }
+
+            // Проверяем длину номера
+            // После +7 должно быть 10 цифр
+            let digits = phone.slice(2);
+
+            if (!/^\d{10}$/.test(digits)) {
+                return "Ошибка: неверный формат номера телефона.";
+            }
+
+            // Форматируем номер: +7 XXX XXX XXXX
+            return `+7 ${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+        }
+
+
+        // Тестирование функции форматирования
+
+        const phone1 = "89161234567";
+        console.log(formatPhoneNumber(phone1));
+        // +7 916 123 4567
+
+        const phone2 = "+79161234567";
+        console.log(formatPhoneNumber(phone2));
+        // +7 916 123 4567
+
+        const phone3 = "1234567890";
+        console.log(formatPhoneNumber(phone3));
+        // Ошибка: неверный формат номера телефона.
+
+
+    </script>
+</body>
+</html>
