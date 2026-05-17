@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+                // Создаём объект книги
+        const libraryBook = {
+            title: "Преступление и наказание",
+            author: "Ф. М. Достоевский",
+            genre: "Роман",
+            year: 1866,
+            available: true
+        };
+
+        // 1. Добавляем новое поле rating
+        libraryBook.rating = 4.8;
+
+        // 2. Изменяем значение available на противоположное
+        libraryBook.available = !libraryBook.available;
+
+        // 3. Удаляем поле genre
+        delete libraryBook.genre;
+
+        // Выводим итоговый объект
+        console.log(libraryBook);
+
+    </script>
+    
+</body>
+</html>
