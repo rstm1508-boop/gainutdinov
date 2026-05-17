@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Регистрация пользователя</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 300px;
+    }
+
+    .name-input {
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    .validate-button {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .message {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="register-form">
+    <input
+      type="text"
+      class="name-input"
+      placeholder="Введите имя"
+    />
+
+    <label>
+      <input type="checkbox" class="agree-checkbox">
+      Я согласен с условиями
+    </label>
+
+    <button type="button" class="validate-button">
+      Проверить
+    </button>
+
+    <p class="message"></p>
+  </form>
+
+  <script>
+    const nameInput = document.querySelector(".name-input");
+    const agreeCheckbox = document.querySelector(".agree-checkbox");
+    const validateButton = document.querySelector(".validate-button");
+    const message = document.querySelector(".message");
+
+    // Событие input
+    nameInput.addEventListener("input", () => {
+      console.log("Текущее имя:", nameInput.value);
+    });
+
+    // Событие click
+    validateButton.addEventListener("click", () => {
+      const userName = nameInput.value.trim();
+      const isAgreed = agreeCheckbox.checked;
+
+      if (userName === "") {
+        console.log("Ошибка: имя не введено");
+        message.textContent = "Введите имя.";
+        return;
+      }
+
+      if (!isAgreed) {
+        console.log("Ошибка: нет согласия с условиями");
+        message.textContent = "Необходимо согласиться с условиями.";
+        return;
+      }
+
+      console.log("Регистрация успешна!");
+      console.log("Имя пользователя:", userName);
+
+      message.textContent = `Добро пожаловать, ${userName}!`;
+    });
+  </script>
+
+</body>
+</html>
